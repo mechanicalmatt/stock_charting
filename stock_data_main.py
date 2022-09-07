@@ -24,8 +24,9 @@ def calc_sma(sma_value: int):
     returns the SMA at each point, starting at data[sma_value]
     """
     sma_points = []
-    for i in range(len(data[sma:]) + 1):
-        # take the preceeding "sma_value" points and average them, then append that value to [sma_points]
+    for data_point in range(len(data[sma:]) + 1):
+        # take the preceeding "sma_value" points and average them, 
+        # then append that value to [sma_points]
         sma_points.append(round(sum(data[sma_value-3:sma_value])/sma, 2))
         # incriment through [data]
         sma_value += 1
