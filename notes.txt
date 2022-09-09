@@ -1,0 +1,11 @@
+matplotlib for plotting
+yahoo finance for live data
+
+df = yf.ticker("{ticker-symbol}")
+pulling data for: "SPY", "AAPL", "BTC-USD"
+
+columns in yf DataFrames:
+['Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits']
+
+
+

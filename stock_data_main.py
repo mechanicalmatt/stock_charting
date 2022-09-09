@@ -1,8 +1,4 @@
 import streamlit as st
-import pandas as pd
-import plotly.io as pio
-import plotly.graph_objects as go
-pio.renderers.default='browser'
 
 
 # TODO: add as many sma lines as you want, without having to hard-code "sma1, sma2, ..."
@@ -20,7 +16,7 @@ sma = st.number_input("SMA value", min_value=3, max_value=len(data))
 
 def calc_sma(sma_value: int):
     """
-    (sma_value) is the SMA to be applied to the 'data'
+    (sma_value) is the SMA to be applied to the [data]
     returns the SMA at each point, starting at data[sma_value]
     """
     sma_points = []
@@ -33,8 +29,11 @@ def calc_sma(sma_value: int):
     return sma_points
 
 
-st.line_chart(data=calc_sma(sma))
-st.line_chart(data=calc_sma(sma))
+
+
+
+# st.line_chart(data=calc_sma(sma))
+# st.line_chart(data=calc_sma(sma))
 
 
 
