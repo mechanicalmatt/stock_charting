@@ -8,3 +8,15 @@ columns in yf DataFrames:
 ['Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits']
 
 *sma is calculated using close
+
+streamlit + mplfinance:
+https://discuss.streamlit.io/t/using-mplfinance-with-streamlit/19322/4
+
+note1:
+horizontal radio buttons source = https://www.youtube.com/watch?v=G9U4Uixssf0
+
+----
+
+8/9/22
+deciding whether to make a dropdown for 3 ticker symbols from yfin or allow manual input 
+- will likely err towards simple UX (dropdown with few selections) and explain the complexity/reasoning in a video

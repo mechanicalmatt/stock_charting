@@ -3,31 +3,57 @@ import pandas as pd
 import mplfinance as mpf
 import streamlit as st
 
-# TODO: radio select between 3 charts
-# ---- f"{ticker_symbol}"
+
+# mpf.plot(df, type="candle", mav=(10))
+
+# TODO: add indicator type selecbox for each ind_count
+# TODO: plot and present data
+# ---- still making decision on plotting package
+# ---- overlay indicators onto chart
+# TODO: manual input ticker symbol
+# ---- https://investexcel.net/all-yahoo-finance-stock-tickers/
+# ---- is this worth doing? there's 106k possible inputs for just stocks > will spend some time figuring ROI > will likely just go w the more straightforward UX then explain decision in vid
 
 
-df = yf.Ticker("TSLA").history(period="6mo", interval="1d")
+with st.sidebar:
 
-# sma1 = 
-# sma2 = 
-# sma3 = 
+    symbol = st.selectbox(
+        'Select the data you would like to view:',
+        ('SPY', 'AAPL', 'BTC-USD')
+    )
+    st.markdown('---')
 
-# mpf.plot(df, type="candle", mav=(sma1, sma2, sma3))
+    indicator_count = st.radio("Add up to four indicators", ('1', '2', '3', '4'))
+    st.write('<style>div.row-widget.stRadio>div{flex-direction:row;}</style>', unsafe_allow_html=True) # notes.txt/note1
+
+    if indicator_count == '1':
+        ind1 = st.selectbox(
+        'Select indicator type:',
+        ('SMA', 'EMA', 'VWAP'), help='only one VWAP may be selected'
+        )
+        if ind1 == 'SMA' or ind1 == 'EMA':
+            st.number_input(label=ind1 + ' value', min_value=3, max_value=200, value=3)
+
+    elif indicator_count == '2':
+        st.number_input(label='SMA 1', min_value=3, max_value=200, value=3)
+        st.number_input(label='SMA 2', min_value=3, max_value=200, value=10)
+
+    elif indicator_count == '3':
+        st.number_input(label='SMA 1', min_value=3, max_value=200, value=3)
+        sma2 = st.number_input(label='SMA 2', min_value=3, max_value=200, value=10)
+        sma3 = st.number_input(label='SMA 3', min_value=3, max_value=200, value=20)
+        st.write(sma2, sma3)
+
+    elif indicator_count == '4':
+        st.number_input(label='SMA 1', min_value=3, max_value=200, value=3)
+        st.number_input(label='SMA 2', min_value=3, max_value=200, value=10)
+        st.number_input(label='SMA 3', min_value=3, max_value=200, value=20)
+        st.number_input(label='SMA 4', min_value=3, max_value=200, value=50)
 
 
-indicator_count = st.radio("Add up to three indicators", ('1', '2', '3'))
+st.title(symbol)
 
+df = yf.Ticker(symbol).history(period="6mo", interval="1d")
 
-if indicator_count == '1':
-    st.number_input(label='SMA', min_value=3, max_value=200, value=3)
-elif indicator_count == '2':
-    st.number_input(label='SMA 1', min_value=3, max_value=200, value=3)
-    st.number_input(label='SMA 2', min_value=3, max_value=200, value=10)
-elif indicator_count == '3':
-    st.number_input(label='SMA 1', min_value=3, max_value=200, value=3)
-    st.text('')
-    st.number_input(label='SMA 2', min_value=3, max_value=200, value=10)
-    st.number_input(label='SMA 3', min_value=3, max_value=200, value=20)
-
+st.write(df)
 
