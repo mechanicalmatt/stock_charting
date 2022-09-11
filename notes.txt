@@ -20,3 +20,26 @@ horizontal radio buttons source = https://www.youtube.com/watch?v=G9U4Uixssf0
 8/9/22
 deciding whether to make a dropdown for 3 ticker symbols from yfin or allow manual input 
 - will likely err towards simple UX (dropdown with few selections) and explain the complexity/reasoning in a video
+
+----
+
+8/10/22
+altair candlesticks: https://altair-viz.github.io/gallery/candlestick_chart.html
+
+write my own autocomplete? vvvv
+[--->
+- if input not in [stock_list] parse string and return list with most matching characters
+-- return list w 3 matching characters, the list w 2 matching characters below
+--> n = len(input), parse n, return [ticker for ticker in [ticker_list] if len(ticker) is ] w ,
+
+1) create list of tickers w len = {len(ticker_input), len(ticker_input) - 1, len(ticker_input) + 1}
+2) parse ticker_input
+3) create list of matching_char_count = len(ticker_input), len(ticker_input) - 1, len(ticker_input) - 2
+3.1) if len(ticker_input) < 4: limit return to matching_char_count = len(ticker_input), len(ticker_input) - 1
+
+* this might be called "fuzzy search" ??? https://www.youtube.com/watch?v=1jNNde4k9Ng
+]<---
+
+
+
+
