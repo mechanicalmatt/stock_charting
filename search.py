@@ -30,9 +30,8 @@ st.write(ticker[:])
 
 # TODO: search for approximate matches for (ticker) in [options]
 # ---- closest match, through 5?
-
-
-
+# TODO: connect SQL db to "/Users/m_gray/Downloads/Yahoo Ticker Symbols.xlsx"
+# TODO: setup MySQL db
 
 
 
